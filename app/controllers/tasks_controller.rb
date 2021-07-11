@@ -9,8 +9,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create(task_params)
-    redirect_to tasks_url
+    if !task_params.empty?
+      return false
+    else
+      @task = Task.create(task_params)
+      redirect_to tasks_url
+    end
   end
 
   def edit
